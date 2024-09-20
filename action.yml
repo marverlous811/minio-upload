@@ -37,9 +37,9 @@ inputs:
     required: false
     default: 'S3v4'
   extra_args:
-    description: Use path-style addressing for S3 API
+    description: Use to add extra arguments to the command mc alias set
     required: false
-    default: 'false'
+    default: '--path off'
 
 runs:
   using: docker
