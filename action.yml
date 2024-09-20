@@ -36,6 +36,11 @@ inputs:
     description: API signature version (S3v2, S3v4)
     required: false
     default: 'S3v4'
+  s3_path_style:
+    description: Use path-style addressing for S3 API
+    required: false
+    default: 'false'
+
 runs:
   using: docker
   image: Dockerfile
@@ -46,6 +51,7 @@ runs:
     YA_INSECURE: '${{ inputs.insecure }}'
     YA_RECURSIVE: '${{ inputs.recursive }}'
     YA_SIGNATURE_VERSION: '${{ inputs.api_signature_version }}'
+    YA_S3_PATH_STYLE: '${{ inputs.s3_path_style }}'
   args:
     - '${{ inputs.source }}'
     - '${{ inputs.bucket }}${{ inputs.target }}'
