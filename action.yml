@@ -1,6 +1,6 @@
 name: Yet another MinIO Upload
 description: Upload file(s) to MinIO instance (self-hosted as well)
-author: "Vladimir <opa_oz> Levin"
+author: 'Vladimir <opa_oz> Levin'
 branding:
   icon: upload-cloud
   color: purple
@@ -32,15 +32,20 @@ inputs:
     description: If you specify a directory, you must also set `recursive=true` to recursively copy the contents of that directory. If you omit the `recursive` argument, action only copies objects in the top level of the specified directory.
     required: false
     default: 'false'
+  api_signature_version:
+    description: API signature version (S3v2, S3v4)
+    required: false
+    default: 'S3v4'
 runs:
   using: docker
   image: Dockerfile
   env:
-    YA_ENDPOINT: "${{ inputs.endpoint }}"
-    YA_ACCESS_KEY: "${{ inputs.access_key }}"
-    YA_SECRET_KEY: "${{ inputs.secret_key }}"
-    YA_INSECURE: "${{ inputs.insecure }}"
-    YA_RECURSIVE: "${{ inputs.recursive }}"
+    YA_ENDPOINT: '${{ inputs.endpoint }}'
+    YA_ACCESS_KEY: '${{ inputs.access_key }}'
+    YA_SECRET_KEY: '${{ inputs.secret_key }}'
+    YA_INSECURE: '${{ inputs.insecure }}'
+    YA_RECURSIVE: '${{ inputs.recursive }}'
+    YA_SIGNATURE_VERSION: '${{ inputs.api_signature_version }}'
   args:
-    - "${{ inputs.source }}"
-    - "${{ inputs.bucket }}${{ inputs.target }}"
+    - '${{ inputs.source }}'
+    - '${{ inputs.bucket }}${{ inputs.target }}'
