@@ -1,6 +1,6 @@
-name: Yet another MinIO Upload
+name: Shadow MinIO Upload
 description: Upload file(s) to MinIO instance (self-hosted as well)
-author: 'Vladimir <opa_oz> Levin'
+author: 'Shadow Walker'
 branding:
   icon: upload-cloud
   color: purple
