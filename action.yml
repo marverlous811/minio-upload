@@ -39,7 +39,7 @@ inputs:
   extra_args:
     description: Use to add extra arguments to the command mc alias set
     required: false
-    default: '--path off'
+    default: ''
 
 runs:
   using: docker
