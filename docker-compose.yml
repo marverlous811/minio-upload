@@ -1,0 +1,16 @@
+services:
+  test:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./demo:/test
+    command: ./test/data for-dev-test/test/data
+    environment:
+      YA_ENDPOINT: YOUR_ENDPOINT
+      YA_ACCESS_KEY: YOUR_ACCESS_KEY
+      YA_SECRET_KEY: YOUR_SECRET_KEY
+      YA_SIGNATURE_VERSION: S3v4
+      YA_EXTRA_ARGS: '--path off'
+      YA_DOWNLOAD: true
+      YA_RECURSIVE: true

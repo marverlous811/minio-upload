@@ -17,11 +17,11 @@ inputs:
   bucket:
     description: Target bucket to upload file to
     required: true
-  source:
-    description: File to upload (use `recursive=true` to upload directory)
+  local_path:
+    description: File in local
     required: true
-  target:
-    description: Target in MinIO's bucket (with a leading slash, default='/')
+  remote_path:
+    description: Object path in MinIO's bucket (with a leading slash, default='/')
     required: false
     default: '/'
   insecure:
@@ -40,6 +40,9 @@ inputs:
     description: Use to add extra arguments to the command mc alias set
     required: false
     default: ''
+  download:
+    description: Download file(s) from MinIO instance
+    default: 'false'
 
 runs:
   using: docker
@@ -52,6 +55,7 @@ runs:
     YA_RECURSIVE: '${{ inputs.recursive }}'
     YA_SIGNATURE_VERSION: '${{ inputs.api_signature_version }}'
     YA_EXTRA_ARGS: '${{ inputs.extra_args }}'
+    YA_DOWNLOAD: '${{ inputs.download }}'
   args:
-    - '${{ inputs.source }}'
-    - '${{ inputs.bucket }}${{ inputs.target }}'
+    - '${{ inputs.local_path }}'
+    - '${{ inputs.bucket }}${{ inputs.remote_path }}'
