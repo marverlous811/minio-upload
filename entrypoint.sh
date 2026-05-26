@@ -1,6 +1,8 @@
 #!/bin/sh -l
 
-export PATH=$PATH:/minio-binaries/
+export PATH=$PATH:/minio-binaries
+ls -lha /minio-binaries
+mc --version
 
 insecure_option=""
 if [[ "$YA_INSECURE" == "true" ]]; then
